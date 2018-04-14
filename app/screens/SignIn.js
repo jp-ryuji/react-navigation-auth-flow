@@ -5,7 +5,7 @@ import { onSignIn } from "../auth";
 
 export default ({ navigation }) => (
   <View style={{ paddingVertical: 20 }}>
-    <Card title="SIGN IN">
+    <Card>
       <FormLabel>Email</FormLabel>
       <FormInput placeholder="Email address..." />
       <FormLabel>Password</FormLabel>
