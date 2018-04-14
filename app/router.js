@@ -80,27 +80,21 @@ export const SignedIn = TabNavigator(
 // };
 
 // NOTE: https://medium.com/@rroossyyiidd/in-createrootnavigator-58763d8415e0
+//       https://github.com/react-navigation/react-navigation/issues/1273#issuecomment-340033502
 //   Works as a modal.
 export const createRootNavigator = (signedIn = false) => {
   return StackNavigator(
     {
-      SignedIn: {
-        screen: SignedIn,
-        navigationOptions: {
-          gesturesEnabled: false
-        }
-      },
-      SignedOut: {
-        screen: SignedOut,
-        navigationOptions: {
-          gesturesEnabled: false
-        }
-      }
+      SignedIn: { screen: SignedIn },
+      SignedOut: { screen: SignedOut }
     },
     {
       headerMode: "none",
       mode: "modal",
-      initialRouteName: signedIn ? "SignedIn" : "SignedOut"
+      initialRouteName: signedIn ? "SignedIn" : "SignedOut",
+      navigationOptions: {
+        gesturesEnabled: false
+      }
     }
   );
 };
