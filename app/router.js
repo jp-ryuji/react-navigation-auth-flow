@@ -63,17 +63,43 @@ export const SignedIn = TabNavigator(
   }
 );
 
+// export const createRootNavigator = (signedIn = false) => {
+//   return SwitchNavigator(
+//     {
+//       SignedIn: {
+//         screen: SignedIn
+//       },
+//       SignedOut: {
+//         screen: SignedOut
+//       }
+//     },
+//     {
+//       initialRouteName: signedIn ? "SignedIn" : "SignedOut"
+//     }
+//   );
+// };
+
+// NOTE: https://medium.com/@rroossyyiidd/in-createrootnavigator-58763d8415e0
+//   Works as a modal.
 export const createRootNavigator = (signedIn = false) => {
-  return SwitchNavigator(
+  return StackNavigator(
     {
       SignedIn: {
-        screen: SignedIn
+        screen: SignedIn,
+        navigationOptions: {
+          gesturesEnabled: false
+        }
       },
       SignedOut: {
-        screen: SignedOut
+        screen: SignedOut,
+        navigationOptions: {
+          gesturesEnabled: false
+        }
       }
     },
     {
+      headerMode: "none",
+      mode: "modal",
       initialRouteName: signedIn ? "SignedIn" : "SignedOut"
     }
   );
